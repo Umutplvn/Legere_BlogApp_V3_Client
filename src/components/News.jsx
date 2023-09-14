@@ -6,7 +6,6 @@ import newsImg from "../assets/news.jpeg"
 import { btnLead } from '../styles/globalStyles';
 
 const News = ({news})=> {
-console.log(news);
 
   return (
     <Box container height={"100vh"} sx={{backgroundColor:"#d8e6f4", overflow:"scroll"}}  >

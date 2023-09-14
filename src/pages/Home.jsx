@@ -41,7 +41,7 @@ const Home = () => {
           <BlogNews />
         </Grid>
 
-        <Grid item display={{xs:"none", md:"block"}} md={3} sx={{m:"4rem auto", position:"fixed", right:0, top:0, zIndex:0}}>
+        <Grid item display={{xs:"none", md:"block"}} md={3} sx={{m:"4rem auto", position:"fixed", right:0, top:0, zIndex:0, minWidth:"280px"}}>
           <News news={news} />
         </Grid>
       </Grid>

@@ -1,3 +1,4 @@
+import { Translate } from "@mui/icons-material";
 import bgImage from "../assets/loginWallpaper.jpeg"
 
 
@@ -181,14 +182,16 @@ export const emojiStyle = {
 export const profileBox = {
   display:"flex",
    padding:"1rem", 
-   flexDirection:"column", 
-   alignItems:'center', 
    gap:"0.5rem", 
    width:"20rem", 
-   m:"auto", 
+ justifyContent:"center",
    boxShadow: "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
     borderRadius:"1rem",
-  
+    position: "fixed",
+    transform: "translate(-50%)",
+    left:"10rem",
+    top:"4rem",
+    height:"100vh"
   } 
 
   
