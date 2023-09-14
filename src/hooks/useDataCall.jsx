@@ -69,6 +69,9 @@ const useDataCall = () => {
     }
   };
 
+ 
+  
+
   return { getData, deleteData, postData, putData, getViews };
 };
 

@@ -8,6 +8,7 @@ const Profile = () => {
   const{user}=useSelector((state)=>state.auth)
 
   return (
+<Box sx={{height:"110vh", backgroundColor:"rgb(247, 253, 255)", padding:"6rem 0"}}>
 
     <Box sx={profileBox}>
       <Avatar sx={{width:"8rem", height:"8rem"}} src={user.image}/>
@@ -18,6 +19,7 @@ const Profile = () => {
       <Typography><span style={{fontWeight:"700", color:"#BB2525"}}>About me: </span>{user.bio} </Typography>
 
     </Box>
+</Box>
 
   )
 }

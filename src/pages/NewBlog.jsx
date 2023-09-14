@@ -1,4 +1,4 @@
-import { Button, Grid, Input, Paper, TextField } from "@mui/material";
+import { Box, Button, Grid, Input, Paper, TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import useDataCall from "../hooks/useDataCall";
 import { useSelector } from "react-redux";
@@ -10,7 +10,7 @@ import cloneDeep from "lodash/cloneDeep";
 
 const NewBlog = () => {
   const { getData, postData } = useDataCall();
-  const { categories, blogs } = useSelector((state) => state.blogs);
+  const { categories } = useSelector((state) => state.blogs);
 
   const status = [
     { name: "Publish", letter: "p" },
@@ -64,7 +64,7 @@ const NewBlog = () => {
   };
 
   return (
-    <Grid container mt={4}>
+    <Grid container mt={4} sx={{height:"105vh", backgroundColor:"rgb(247, 253, 255)"}}>
       <Grid item xs={11} md={6} m={"auto"}>
         <Paper
           elevation={6}
@@ -87,14 +87,18 @@ const NewBlog = () => {
               />
             </FormControl>
 
-            <FormControl>
+            <FormControl
+            sx={{ textOverflow:"hidden"}}
+            >
               <TextField
+
                 onChange={handleChange}
                 placeholder="Content"
                 value={content.content}
                 sx={{
                   height: "200px",
                   borderRadius: "1rem",
+                  overflow:"scroll",
                   "& fieldset": { border: "none" },
                 }}
                 multiline

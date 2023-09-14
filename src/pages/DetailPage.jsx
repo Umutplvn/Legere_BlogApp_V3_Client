@@ -43,7 +43,7 @@ const DetailPage = () => {
 
   return (
     <Grid container sx={detailPageStyle}>
-      <Grid item xs={11} sm={10} md={9} lg={7} xl={5} m={"auto"} width={"100%"}>
+      <Grid item xs={11} sm={10} md={9} lg={7} xl={5} m={"auto"} width={"100%"} sx={{mt:"5rem"}}>
         <Box>
           <Box mt={"1rem"}>
             {veri.map((item) => (

@@ -84,8 +84,8 @@ const Header = () => {
   ];
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
+    <AppBar position="fixed" sx={{zIndex:3, backgroundColor:"#629bd1"}} >
+      <Container maxWidth="xl" >
         <Toolbar disableGutters>
           <Avatar
             sx={{

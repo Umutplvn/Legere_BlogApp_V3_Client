@@ -147,8 +147,7 @@ export const homeStyle = {
   backgroundPosition:"cover",
   paddingBottom:"4rem",
   backgroundAttachment:"fixed",
-
-
+backgroundColor:"rgb(247, 253, 255)"
 
     
 }
@@ -157,10 +156,11 @@ export const detailPageStyle = {
   backgroundColor:"white",
   m:"auto",
   alignItems:"center",
-  height:"100vh",
+  height:"120vh",
   display:"flex",
   flexDirection:"column",
   backgroundAttachment:"fixed",
+  backgroundColor:"rgb(247, 253, 255)"
  
 }
 
@@ -185,7 +185,10 @@ export const profileBox = {
    alignItems:'center', 
    gap:"0.5rem", 
    width:"20rem", 
-   m:"3rem auto", 
+   m:"auto", 
    boxShadow: "rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px",
-    borderRadius:"1rem"
+    borderRadius:"1rem",
+  
   } 
+
+  

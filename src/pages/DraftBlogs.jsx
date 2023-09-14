@@ -40,7 +40,7 @@ const DraftBlogs = () => {
   };
 
   return (
-    <Box container height={"100%"}>
+    <Box container height={"100vh"} sx={{pt:"5rem", backgroundColor:"rgb(247, 253, 255)"}}>
       {newData?.length < 1 ? (
         <>
           <Typography
