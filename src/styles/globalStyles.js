@@ -1,4 +1,3 @@
-import { Calculate, Translate } from "@mui/icons-material";
 import bgImage from "../assets/loginWallpaper.jpeg"
 
 
@@ -157,11 +156,13 @@ export const detailPageStyle = {
   backgroundColor:"white",
   m:"auto",
   alignItems:"center",
-  height:"120vh",
+  height:"130vh",
   display:"flex",
   flexDirection:"column",
   backgroundAttachment:"fixed",
-  backgroundColor:"rgb(247, 253, 255)"
+  backgroundColor:"rgb(247, 253, 255)",
+  overflow:"scroll",
+  paddingBottom:"3rem"
  
 }
 

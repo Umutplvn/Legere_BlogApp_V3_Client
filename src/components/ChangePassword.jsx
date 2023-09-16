@@ -19,12 +19,14 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { object, string } from "yup";
 import { useState } from 'react';
 import {btnStyle} from "../styles/globalStyles.js"
+import HomeIcon from '@mui/icons-material/Home';
+import { useNavigate } from 'react-router';
+import LogoutIcon from '@mui/icons-material/Logout';
 
-
-const ChangePassword =({revolve, open, setOpen}) => {
+const ChangePassword =({open, setOpen}) => {
   
-const {passwordUpdate}=useAuthCall()
-
+const {passwordUpdate, logout}=useAuthCall()
+const navigate=useNavigate()
 
   const handleClick = () => {
     setOpen(!open);
@@ -72,11 +74,25 @@ const {passwordUpdate}=useAuthCall()
 
 
     <List
-      sx= {{ width: '320px', bgcolor: 'background.paper'}}
+      sx= {{ width: '320px', bgcolor: "rgb(247, 253, 255)"}}
       
       component="nav"
       aria-labelledby="nested-list-subheader"
     >
+      <ListItemButton onClick={()=>navigate("/")}>
+<ListItemIcon>
+<HomeIcon/>
+</ListItemIcon>
+    <ListItemText>Home</ListItemText>
+      </ListItemButton>
+
+      <ListItemButton onClick={()=>logout()}>
+<ListItemIcon>
+<LogoutIcon/>
+</ListItemIcon>
+    <ListItemText>Logout</ListItemText>
+      </ListItemButton>
+
   
       <ListItemButton onClick={()=>handleClick()}>
         <ListItemIcon>
@@ -224,7 +240,7 @@ const {passwordUpdate}=useAuthCall()
                   </>
                   
                 )}
-  <Button type="submit" sx={btnStyle} >
+  <Button type="submit" sx={btnStyle}  onClick={()=>handleClick()} >
                   SAVE
                 </Button>
               </Form>
@@ -233,9 +249,12 @@ const {passwordUpdate}=useAuthCall()
 
         </Formik>
             <ListItemText />
+
         </List>
       </Collapse>
+
     </List>
+        
 
   );
 }

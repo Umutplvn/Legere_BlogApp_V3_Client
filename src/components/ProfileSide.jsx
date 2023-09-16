@@ -91,13 +91,13 @@ const ProfileSide = () => {
           <Box
             sx={{
               width: "320px",
-              height: "300px",
+              height: "400px",
               overflow: "hidden",
               mt: "2rem",
             }}
           >
             {revolve ? (
-              <Box sx={{ transform: "translateY(-70px)", transition: "1s" }}>
+              <Box sx={{ transform: "translateY(-170px)", transition: "1s" }}>
                 <ChangePassword revolve={revolve} />
               </Box>
             ) : (

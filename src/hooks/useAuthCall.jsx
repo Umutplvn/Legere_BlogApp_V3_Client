@@ -68,6 +68,7 @@ const useAuthCall = () => {
     await axiosWithToken.post(`${process.env.REACT_APP_BASE_URL}users/auth/password/change/`, data)  
       toastSuccessNotify("Password Changed Successfully");
     } catch (error) {
+      toastErrorNotify("Failed to change password")
       toastErrorNotify(error);
     }
   };
