@@ -1,4 +1,4 @@
-import { Translate } from "@mui/icons-material";
+import { Calculate, Translate } from "@mui/icons-material";
 import bgImage from "../assets/loginWallpaper.jpeg"
 
 
@@ -194,4 +194,12 @@ export const profileBox = {
     height:"100vh"
   } 
 
+
+  export const myBlogs ={
+    width: `calc(100vw - 320px)`,
+    padding:"2rem",
+    mt:"5rem",
+    
+    
+  }
   

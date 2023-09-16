@@ -171,15 +171,12 @@ const AuthForm = () => {
         </Typography>
         <Box sx={flexBoxRow}>
           <Link to="https://github.com/Umutplvn">
-            {" "}
             <GitHubIcon sx={icon} />{" "}
           </Link>
           <Link to="https://www.linkedin.com/in/umut-pehlivan-817b28174/">
-            {" "}
             <LinkedInIcon sx={icon} />
           </Link>
           <Link to="https://www.instagram.com/umutpehlivan35/">
-            {" "}
             <InstagramIcon sx={icon} />
           </Link>
         </Box>
