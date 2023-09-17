@@ -6,11 +6,11 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import cloneDeep from "lodash/cloneDeep";
 
 const NewBlog = () => {
-  const { getData, postData } = useDataCall();
+  const { getData, postData, getDrafts } = useDataCall();
   const { categories } = useSelector((state) => state.blogs);
+  const { userId } = useSelector((state) => state.auth);
 
   const status = [
     { name: "Publish", letter: "p" },
@@ -25,8 +25,8 @@ const NewBlog = () => {
     slug: "",
   });
 
+
   const blogPost = () => {
-    if (content.status == "p") {
       postData("blogs", "", content);
       getData("blogs");
       setContent({
@@ -36,23 +36,7 @@ const NewBlog = () => {
         category: "",
         status: "",
         slug: "",
-      });
-    } else {
-      let newObj = cloneDeep(content);
-      let newArr = [];
-      const oldArr = JSON.parse(localStorage.getItem("newArr") || "[]");
-      newArr = oldArr;
-      newArr.push(newObj);
-      localStorage.setItem("newArr", JSON.stringify(newArr));
-      setContent({
-        title: "",
-        content: "",
-        image: "",
-        category: "",
-        status: "",
-        slug: "",
-      });
-    }
+      })
   };
 
   useEffect(() => {

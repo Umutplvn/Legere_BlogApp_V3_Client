@@ -9,11 +9,11 @@ const News = ({news})=> {
 
   return (
     <Box container height={"100vh"} sx={{backgroundColor:"#d8e6f4", overflow:"scroll"}}  >
-    <Grid container >
+    <Grid container sx={{marginBottom:"3rem"}} >
       {news?.map((item, index)=>(
     <Box
     key={index}
-    sx={{ minWidth: "280px", maxWidth:"280px", padding: "1rem", m:"2rem auto", }}
+    sx={{ minWidth: "280px", maxWidth:"280px", padding: "1rem", m:"1rem auto", }}
   >
     <Paper
       elevation={3}

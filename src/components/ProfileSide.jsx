@@ -9,6 +9,7 @@ const ProfileSide = () => {
   const [open, setOpen] = React.useState(true);
 
   const { user } = useSelector((state) => state.auth);
+console.log("user",user);
 
   const slide = () => {
     setRevolve(!revolve);
@@ -44,7 +45,7 @@ const ProfileSide = () => {
                     fontSize: "1.5rem",
                     transform: "rotate(-180deg)",
                     transitionTimingFunction: "linear",
-                    transition: "2s",
+                    transition: "1s",
                     cursor: "pointer",
                   }
                 : {
@@ -53,7 +54,7 @@ const ProfileSide = () => {
                     fontSize: "1.5rem",
                     transform: "rotate(180deg)",
                     transitionTimingFunction: "linear",
-                    transition: "2s",
+                    transition: "1s",
                     cursor: "pointer",
                   }
             }
@@ -92,8 +93,9 @@ const ProfileSide = () => {
             sx={{
               width: "320px",
               height: "400px",
-              overflow: "hidden",
+              overflow: "scroll",
               mt: "2rem",
+              mb:"2rem"
             }}
           >
             {revolve ? (

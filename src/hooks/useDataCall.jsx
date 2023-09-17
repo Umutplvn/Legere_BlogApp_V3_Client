@@ -4,6 +4,7 @@ import {
   fetchStart,
   fetchFail,
   postDataSuccess,
+  getDraftSuccess
 } from "../features/blogDataSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
@@ -11,19 +12,31 @@ import axios from "axios";
 
 const useDataCall = () => {
   const { axiosWithToken, axiosPublic } = useAxios();
-  const { token } = useSelector((state) => state.auth);
+  const { token, userId } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+
 
   const getData = async (url) => {
     dispatch(fetchStart());
     try {
       const { data } = await axiosPublic(`${url}/`);
       dispatch(getDataSuccess({ url, data }));
+
     } catch (error) {
       dispatch(fetchFail());
       toastErrorNotify(error);
     }
   };
+
+  const getDrafts= async (userId)=>{
+    dispatch(fetchStart())
+    try {
+      const {data}= await axiosWithToken(`/blogs/?author=${userId}`)
+      dispatch(getDraftSuccess({data}))
+    } catch (error) {
+      dispatch(fetchFail());
+      toastErrorNotify(error);    }
+  }
 
   const getViews = (id) => {
     axios(`http://30124.fullstack.clarusway.com/api/blogs/${id}/`, {
@@ -74,7 +87,7 @@ const useDataCall = () => {
  
   
 
-  return { getData, deleteData, postData, putData, getViews };
+  return { getData, deleteData, postData, putData, getViews, getDrafts };
 };
 
 export default useDataCall;

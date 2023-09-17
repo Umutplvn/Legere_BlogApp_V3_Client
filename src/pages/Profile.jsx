@@ -5,7 +5,6 @@ import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import ProfileSide from '../components/ProfileSide';
 import MyBlogs from '../components/MyBlogs';
 import useDataCall from '../hooks/useDataCall';
@@ -81,7 +80,8 @@ const Profile = (props)=> {
       </Box>
       <Box
         component="main"
-        sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` }}}
+        paddingBottom={"3rem"}
+        sx={{ flexGrow: 1, p: 3, overflow:"scroll", height:"100vh",width: { sm: `calc(100% - ${drawerWidth}px)` }}}
       >
        <MyBlogs/>
       </Box>

@@ -13,7 +13,7 @@ const DeleteModal = ({ open, handleClose, id }) => {
   const handleDelete = (id) => {
     deleteData(id);
     handleClose();
-    navigate("/");
+    navigate(-1);
   };
 
   return (

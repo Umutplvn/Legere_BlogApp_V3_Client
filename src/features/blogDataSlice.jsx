@@ -9,6 +9,7 @@ const blogDataSlice = createSlice({
     comments: [],
     categories: [],
     view: [],
+    draft:[]
   },
 
   reducers: {
@@ -32,6 +33,14 @@ const blogDataSlice = createSlice({
       state.error = true;
       state[payload?.url] = payload?.data;
     },
+
+    getDraftSuccess: (state, { payload }) => {
+      state.loading = false;
+      state.error = true;
+      state.draft = payload?.data;
+    },
+
+
   },
 });
 
@@ -41,6 +50,7 @@ export const {
   fetchFail,
   getDataLikeSuccess,
   postDataSuccess,
+  getDraftSuccess
 } = blogDataSlice.actions;
 
 export default blogDataSlice.reducer;
