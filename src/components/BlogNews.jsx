@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import useDataCall from "../hooks/useDataCall";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
 
 const BlogNews = () => {
   useEffect(() => {

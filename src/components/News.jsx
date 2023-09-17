@@ -9,11 +9,11 @@ const News = ({news})=> {
 
   return (
     <Box container height={"100vh"} sx={{backgroundColor:"#d8e6f4", overflow:"scroll"}}  >
-    <Grid container  >
+    <Grid container >
       {news?.map((item, index)=>(
     <Box
     key={index}
-    sx={{ minWidth: "280px", height: "500px", padding: "1rem", m:"1rem auto" }}
+    sx={{ minWidth: "280px", maxWidth:"280px", padding: "1rem", m:"2rem auto", }}
   >
     <Paper
       elevation={3}
@@ -21,11 +21,11 @@ const News = ({news})=> {
         color: "black",
         "&:hover": { backgroundColor: "#eef8fa" },
         transition: "0.3s",
-        backgroundColor: "white",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-       
+        padding:"0.5rem",
+        display:"flex",
+        flexWrap:"wrap",
+        justifyContent:"center",
+        height:"500px"    
       }}
     >
       <Box height={"200px"} padding={"0.5rem"} textAlign={"center"}>
@@ -45,22 +45,17 @@ const News = ({news})=> {
         component={"h4"}
         variant="h5"
         fontWeight={"600"}
-        sx={{ textAlign: "center" }}
+        sx={{ textAlign:"center",
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        display:" -webkit-box",
+        WebkitLineClamp: "4",
+        WebkitBoxOrient: "vertical"}}
       >
         {item.title}
       </Typography>
 
-      {/* Content Text */}
-      <Box padding={"0.5rem"}>
-        <Typography
-          height={"80px"}
-          textOverflow="ellipsis"
-          sx={{ overflow: "hidden", whiteSpace: "pre" }}
-        >
-          {item.description}
-        </Typography>
-      </Box>
-      {/* Content User Info */}
+ 
   
 
    
