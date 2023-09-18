@@ -4,44 +4,33 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import useDataCall from "../hooks/useDataCall";
 import { useNavigate } from "react-router";
 import DraftBlogModal from "../components/DraftBlogModal";
+import { useSelector } from "react-redux";
 
 const DraftBlogs = () => {
-  const { postData, getData } = useDataCall();
+  const { getDrafts } = useDataCall();
   const [open, setOpen] = React.useState(false);
-  const [info, setInfo] = useState();
+  const [info, setInfo] = useState({});
   const [newData, setNewData] = useState();
+  const{userId}=useSelector((state)=>state.auth)
+  const{draft}=useSelector((state)=>state.blogs)
 
-  const handleOpen = (index) => {
-    setOpen(true);
-    setInfo({
-      title: newData[index].title,
-      content: newData[index].content,
-      image: newData[index].image,
-      category: newData[index].category,
-      status: "",
-      slug: "",
-      id: index,
-    });
-  };
+  const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    setNewData(JSON.parse(localStorage.getItem("newArr")));
+    getDrafts(userId)
   }, []);
 
   const postDraft = (item, index) => {
-    item.status = "p";
-    postData("blogs", "", item);
-    const erase = newData.filter((item) => item !== newData[index]);
-    localStorage.setItem("newArr", JSON.stringify(erase));
-    setNewData(erase);
-    getData("blogs");
+    console.log(item);
+    // postData("blogs", "", info);
+    // getData("blogs");
   };
 
   return (
     <Box container height={"100vh"} sx={{pt:"5rem", backgroundColor:"rgb(247, 253, 255)"}}>
-      {newData?.length < 1 ? (
+      {draft?.length < 1 ? (
         <>
           <Typography
             sx={{
@@ -72,7 +61,7 @@ const DraftBlogs = () => {
         </>
       ) : (
         <Grid container>
-          {newData?.map((item, index) => (
+          {draft?.map((item, index) => (
             <Grid
               item
               key={index}
@@ -143,7 +132,7 @@ const DraftBlogs = () => {
                   <Button onClick={() => postDraft(item, index)}>
                     Publish
                   </Button>
-                  <Button onClick={() => handleOpen(index)}>Edit</Button>
+                  <Button onClick={handleOpen}>Edit</Button>
 
                   <DraftBlogModal
                     handleOpen={handleOpen}

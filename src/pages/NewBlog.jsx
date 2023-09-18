@@ -8,9 +8,8 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
 const NewBlog = () => {
-  const { getData, postData, getDrafts } = useDataCall();
+  const { getData, postData } = useDataCall();
   const { categories } = useSelector((state) => state.blogs);
-  const { userId } = useSelector((state) => state.auth);
 
   const status = [
     { name: "Publish", letter: "p" },
