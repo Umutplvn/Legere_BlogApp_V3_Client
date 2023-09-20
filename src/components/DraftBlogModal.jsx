@@ -27,6 +27,8 @@ const DraftBlogModal = ({
     setInfo({ ...info, [e.target.name]: e.target.value });
   };
 
+  // Draft blog api will be used 
+  
   const handleSubmit = () => {
     info.status = "p";
     postData("blogs", "", info);
