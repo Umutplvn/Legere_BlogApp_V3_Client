@@ -32,10 +32,11 @@ const useDataCall = () => {
     dispatch(fetchStart())
     try {
       const {data}= await axiosWithToken(`/blogs/?author=${userId}`)
-      dispatch(getDraftSuccess({data}))
+      const info = data?.filter((item)=>item?.status=="d")
+      dispatch(getDraftSuccess({info}))
     } catch (error) {
       dispatch(fetchFail());
-      toastErrorNotify(error);    }
+      toastErrorNotify(error)}
   }
 
   const getViews = (id) => {
@@ -61,12 +62,11 @@ const useDataCall = () => {
   const putData = async (url, id, info) => {
     dispatch(fetchStart());
     try {
-      const { data } = await axiosWithToken.put(`${url}/${id}/`, info);
+      await axiosWithToken.put(`${url}/${id}/`, info);
       getData("blogs");
     } catch (error) {
       dispatch(fetchFail());
       toastErrorNotify(error.response.data.detail);
-      console.log(error);
     }
   };
 

@@ -37,7 +37,7 @@ const blogDataSlice = createSlice({
     getDraftSuccess: (state, { payload }) => {
       state.loading = false;
       state.error = true;
-      state.draft = payload?.data;
+      state.draft = payload?.info;
     },
 
 

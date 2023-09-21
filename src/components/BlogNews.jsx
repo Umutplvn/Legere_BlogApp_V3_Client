@@ -25,6 +25,7 @@ const BlogNews = () => {
     postData("likes", `${id}/`, "")
   };
 
+  console.log(blogs);
 
   const handleReturn=(item)=>{
     const data=item.likes_n.map((veri)=>veri.user_id==userId)
