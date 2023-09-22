@@ -9,13 +9,9 @@ import useDataCall from "../hooks/useDataCall";
 import { btnGreen, btnRed } from "../styles/globalStyles";
 import InputLabel from "@mui/material/InputLabel";
 
-
-const DraftBlogModal = ({
-  open,
-  handleClose,
-  info,
-  setInfo,
-}) => {
+const DraftBlogModal = ({ open, handleClose, info, setInfo }) => {
+  const { putData, getDrafts } = useDataCall();
+  const{userId}=useSelector((state)=>state.auth)
   const { categories } = useSelector((state) => state.blogs);
   const { getData } = useDataCall();
   useEffect(() => {
@@ -31,10 +27,14 @@ const DraftBlogModal = ({
     setInfo({ ...info, [e.target.name]: e.target.value });
   };
 
-      console.log(info);
+  console.log(info);
 
-  const handleSubmit = () => {
-   
+  const handleSubmit = (info) => {
+    console.log(info);
+    putData("blogs", info.id, info)
+    handleClose()
+    getDrafts(userId)
+
   };
 
   return (
@@ -91,9 +91,9 @@ const DraftBlogModal = ({
                 />
 
                 <FormControl fullWidth sx={{ mt: "1rem" }}>
-                <InputLabel id="demo-simple-select-label">
-                Category
-              </InputLabel>
+                  <InputLabel id="demo-simple-select-label">
+                    Category
+                  </InputLabel>
                   <Select
                     labelId="category"
                     label="Category"
@@ -101,10 +101,9 @@ const DraftBlogModal = ({
                     onChange={handleChange}
                     value={info?.category}
                     name="category"
-
                   >
                     {categories?.map((item) => (
-                      <MenuItem value={Number(item?.id)}  key={item?.id}>
+                      <MenuItem value={Number(item?.id)} key={item?.id}>
                         {item?.name}
                       </MenuItem>
                     ))}
@@ -112,31 +111,34 @@ const DraftBlogModal = ({
                 </FormControl>
 
                 <FormControl fullWidth sx={{ mt: "0.5rem" }}>
-              <InputLabel id="demo-simple-select-label">
-                Publish/Draft
-              </InputLabel>
-              <Select
-                labelId="Publish/Draft"
-                id="Publish/Draft"
-                label="Publish/Draft"
-                name="status"
-                onChange={handleChange}
-                value={info?.status}
-                
-              >
-                {status.map((item, index) => (
-                  <MenuItem key={index} name={status.name}  value={item.letter}>
-                    {item?.name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
+                  <InputLabel id="demo-simple-select-label">
+                    Publish/Draft
+                  </InputLabel>
+                  <Select
+                    labelId="Publish/Draft"
+                    id="Publish/Draft"
+                    label="Publish/Draft"
+                    name="status"
+                    onChange={handleChange}
+                    value={info?.status}
+                  >
+                    {status.map((item, index) => (
+                      <MenuItem
+                        key={index}
+                        name={status.name}
+                        value={item.letter}
+                      >
+                        {item?.name}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
 
                 <Box sx={{ display: "flex", m: "1rem auto", gap: "1rem" }}>
                   <Button sx={btnRed} onClick={handleClose}>
                     Cancel
                   </Button>
-                  <Button sx={btnGreen} onClick={handleSubmit}>
+                  <Button sx={btnGreen} onClick={()=>handleSubmit(info)}>
                     SAVE
                   </Button>
                 </Box>

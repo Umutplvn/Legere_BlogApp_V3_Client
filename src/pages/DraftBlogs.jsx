@@ -7,7 +7,7 @@ import DraftBlogModal from "../components/DraftBlogModal";
 import { useSelector } from "react-redux";
 
 const DraftBlogs = () => {
-  const { getDrafts, putData } = useDataCall();
+  const { getDrafts } = useDataCall();
   const [open, setOpen] = React.useState(false);
   let [info, setInfo] = useState({
     title: "",
