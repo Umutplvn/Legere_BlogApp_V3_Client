@@ -8,9 +8,10 @@ import { useSelector } from "react-redux";
 import useDataCall from "../hooks/useDataCall";
 import { btnGreen, btnRed } from "../styles/globalStyles";
 import InputLabel from "@mui/material/InputLabel";
+import { useNavigate } from "react-router";
 
 const DraftBlogModal = ({ open, handleClose, info, setInfo }) => {
-  const { putData, getDrafts } = useDataCall();
+  const { putData } = useDataCall();
   const{userId}=useSelector((state)=>state.auth)
   const { categories } = useSelector((state) => state.blogs);
   const { getData } = useDataCall();
@@ -30,11 +31,8 @@ const DraftBlogModal = ({ open, handleClose, info, setInfo }) => {
   console.log(info);
 
   const handleSubmit = (info) => {
-    console.log(info);
     putData("blogs", info.id, info)
     handleClose()
-    getDrafts(userId)
-
   };
 
   return (

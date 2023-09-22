@@ -48,7 +48,7 @@ console.log(myBlogs);
   return (
     <Box container  height={"100%"}  mt={"4rem"}  >
       {myBlogs.length<=0 ?
-       <Typography sx={{textAlign:"center", mt:"3rem", color:"primary.main", fontSize:"1.5rem", fontWeight:"700"}}>You have no blog to be shown</Typography>:
+       <Typography sx={{textAlign:"center", mt:"3rem", color:"primary.main", fontSize:"1.5rem", fontWeight:"700"}}>You have no published blog to be shown</Typography>:
       <Grid container  >
         {myBlogs?.map((item) => (
           <Grid

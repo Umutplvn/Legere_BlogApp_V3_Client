@@ -27,7 +27,7 @@ const UpdateModal = ({ updateOpen, handleUpdateClose, item }) => {
   const handleSubmit = (id) => {
     putData("blogs", id, info);
     handleUpdateClose();
-    navigate("/");
+    navigate(-1);
   };
 
   return (

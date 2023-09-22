@@ -43,7 +43,7 @@ const BlogNews = () => {
 
 
   return (
-    <Box container  height={"100vh"}   >
+    <Box container  height={"150vh"}   >
       <Grid container  >
         {blogs?.map((item) => (
           <Grid
