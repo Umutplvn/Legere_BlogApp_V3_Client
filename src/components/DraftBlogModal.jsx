@@ -7,44 +7,34 @@ import Select from "@mui/material/Select";
 import { useSelector } from "react-redux";
 import useDataCall from "../hooks/useDataCall";
 import { btnGreen, btnRed } from "../styles/globalStyles";
+import InputLabel from "@mui/material/InputLabel";
+
 
 const DraftBlogModal = ({
   open,
   handleClose,
-  newData,
-  setNewData,
-  index,
   info,
   setInfo,
 }) => {
   const { categories } = useSelector((state) => state.blogs);
-  const { postData, getData } = useDataCall();
+  const { getData } = useDataCall();
   useEffect(() => {
     getData("categories");
   }, []);
+
+  const status = [
+    { name: "Publish", letter: "p" },
+    { name: "Draft", letter: "d" },
+  ];
 
   const handleChange = (e) => {
     setInfo({ ...info, [e.target.name]: e.target.value });
   };
 
-  // Draft blog api will be used 
-  
+      console.log(info);
+
   const handleSubmit = () => {
-    info.status = "p";
-    postData("blogs", "", info);
-    const erase = newData[index - 1];
-    if (erase == undefined) {
-      let filtered = [];
-      setNewData([]);
-      localStorage.setItem("newArr", JSON.stringify(filtered));
-    } else {
-      let filtered = newData.filter((item) => item !== erase);
-      console.log("filtered", filtered);
-      setNewData(filtered);
-      localStorage.setItem("newArr", JSON.stringify(filtered));
-    }
-    handleClose();
-    getData("blogs");
+   
   };
 
   return (
@@ -101,26 +91,53 @@ const DraftBlogModal = ({
                 />
 
                 <FormControl fullWidth sx={{ mt: "1rem" }}>
+                <InputLabel id="demo-simple-select-label">
+                Category
+              </InputLabel>
                   <Select
                     labelId="category"
+                    label="Category"
                     id="category"
                     onChange={handleChange}
                     value={info?.category}
                     name="category"
+
                   >
                     {categories?.map((item) => (
-                      <MenuItem value={Number(item?.id)} key={item?.id}>
+                      <MenuItem value={Number(item?.id)}  key={item?.id}>
                         {item?.name}
                       </MenuItem>
                     ))}
                   </Select>
                 </FormControl>
+
+                <FormControl fullWidth sx={{ mt: "0.5rem" }}>
+              <InputLabel id="demo-simple-select-label">
+                Publish/Draft
+              </InputLabel>
+              <Select
+                labelId="Publish/Draft"
+                id="Publish/Draft"
+                label="Publish/Draft"
+                name="status"
+                onChange={handleChange}
+                value={info?.status}
+                
+              >
+                {status.map((item, index) => (
+                  <MenuItem key={index} name={status.name}  value={item.letter}>
+                    {item?.name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+
                 <Box sx={{ display: "flex", m: "1rem auto", gap: "1rem" }}>
                   <Button sx={btnRed} onClick={handleClose}>
                     Cancel
                   </Button>
                   <Button sx={btnGreen} onClick={handleSubmit}>
-                    Public
+                    SAVE
                   </Button>
                 </Box>
               </FormControl>

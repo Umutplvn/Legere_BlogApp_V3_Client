@@ -9,8 +9,14 @@ import { useSelector } from "react-redux";
 const DraftBlogs = () => {
   const { getDrafts, putData } = useDataCall();
   const [open, setOpen] = React.useState(false);
-  const [info, setInfo] = useState();
-  const [newData, setNewData] = useState();
+  let [info, setInfo] = useState({
+    title: "",
+    content: "",
+    image: "",
+    category: "",
+    status: "",
+    slug: "",
+  });  const [newData, setNewData] = useState();
   const{userId}=useSelector((state)=>state.auth)
   const{draft}=useSelector((state)=>state.blogs)
 
@@ -22,21 +28,11 @@ const DraftBlogs = () => {
     getDrafts(userId)
   }, []);
 
-  const postDraft = (item) => {
-    const info =(draft.filter((blog)=>blog.id==item.id))[0]
-    const data={content:info.content,
-      image:info.image,
-      category:info.category,
-      status:"p",
-      title:info.title
-    }
-    putData("blogs",item.id, data);
-    getDrafts(userId)
-   window.location.reload()
-  };
 
-  console.log(draft);
-
+const openModal=(item)=>{
+  setOpen(true)
+  setInfo(item)
+}
   return (
     <Box container height={"150vh"} sx={{pt:"5rem", backgroundColor:"rgb(247, 253, 255)"}}>
       {draft?.length < 1 ? (
@@ -138,10 +134,8 @@ const DraftBlogs = () => {
                   <Avatar>
                     <AccountCircleIcon />
                   </Avatar>
-                  <Button onClick={() => {postDraft(item)}}>
-                    Publish
-                  </Button>
-                  <Button onClick={handleOpen}>Edit</Button>
+                
+                  <Button onClick={()=>openModal(item)}>Edit</Button>
 
                   <DraftBlogModal
                     handleOpen={handleOpen}
