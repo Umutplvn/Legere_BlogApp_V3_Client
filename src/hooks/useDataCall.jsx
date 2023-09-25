@@ -4,7 +4,7 @@ import {
   fetchStart,
   fetchFail,
   postDataSuccess,
-  getDraftSuccess
+  getDraftSuccess,
 } from "../features/blogDataSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
@@ -15,29 +15,28 @@ const useDataCall = () => {
   const { token, userId } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
-
   const getData = async (url) => {
     dispatch(fetchStart());
     try {
       const { data } = await axiosPublic(`${url}/`);
       dispatch(getDataSuccess({ url, data }));
-
     } catch (error) {
       dispatch(fetchFail());
       toastErrorNotify(error);
     }
   };
 
-  const getDrafts= async (userId)=>{
-    dispatch(fetchStart())
+  const getDrafts = async (userId) => {
+    dispatch(fetchStart());
     try {
-      const {data}= await axiosWithToken(`/blogs/?author=${userId}`)
-      const info = data?.filter((item)=>item?.status=="d")
-      dispatch(getDraftSuccess({info}))
+      const { data } = await axiosWithToken(`/blogs/?author=${userId}`);
+      const info = data?.filter((item) => item?.status == "d");
+      dispatch(getDraftSuccess({ info }));
     } catch (error) {
       dispatch(fetchFail());
-      toastErrorNotify(error)}
-  }
+      toastErrorNotify(error);
+    }
+  };
 
   const getViews = (id) => {
     axios(`http://30124.fullstack.clarusway.com/api/blogs/${id}/`, {
@@ -64,7 +63,7 @@ const useDataCall = () => {
     try {
       await axiosWithToken.put(`${url}/${id}/`, info);
       getData("blogs");
-      getDrafts(userId)
+      getDrafts(userId);
     } catch (error) {
       dispatch(fetchFail());
       toastErrorNotify(error.response.data.detail);
@@ -82,11 +81,6 @@ const useDataCall = () => {
       dispatch(fetchFail());
     }
   };
-
-
-
- 
-  
 
   return { getData, deleteData, postData, putData, getViews, getDrafts };
 };

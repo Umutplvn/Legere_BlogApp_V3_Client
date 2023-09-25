@@ -8,8 +8,8 @@ const About = () => {
         flexDirection: "column",
         gap: "10px",
         padding: "30px",
-        backgroundColor:"rgb(247, 253, 255)",
-        marginTop:"4rem"
+        backgroundColor: "rgb(247, 253, 255)",
+        marginTop: "4rem",
       }}
     >
       <Typography

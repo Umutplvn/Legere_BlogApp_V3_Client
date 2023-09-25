@@ -11,11 +11,10 @@ import { useNavigate } from "react-router";
 import { toastErrorNotify, toastSuccessNotify } from "../helper/ToastNotify";
 import useAxios from "./useAxios";
 
-
 const useAuthCall = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {axiosWithToken}=useAxios()
+  const { axiosWithToken } = useAxios();
 
   const login = async (userData) => {
     dispatch(fetchStart);
@@ -63,17 +62,18 @@ const useAuthCall = () => {
     }
   };
 
-  const passwordUpdate= async(data)=>{
+  const passwordUpdate = async (data) => {
     try {
-    await axiosWithToken.post(`${process.env.REACT_APP_BASE_URL}users/auth/password/change/`, data)  
+      await axiosWithToken.post(
+        `${process.env.REACT_APP_BASE_URL}users/auth/password/change/`,
+        data
+      );
       toastSuccessNotify("Password Changed Successfully");
     } catch (error) {
-      toastErrorNotify("Failed to change password")
+      toastErrorNotify("Failed to change password");
       toastErrorNotify(error);
     }
   };
-  
-
 
   return { login, register, logout, passwordUpdate };
 };

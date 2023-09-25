@@ -1,8 +1,7 @@
-import { Box, Grid, Paper } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { Avatar, Button, Typography } from "@mui/material";
+import { Avatar, Button, Typography, Box, Grid, Paper  } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
@@ -14,7 +13,6 @@ import DeleteModal from "../components/DeleteModal";
 import UpdateModal from "../components/UpdateModal";
 
 const DetailPage = () => {
-
   useEffect(() => {
     getData("blogs");
   }, []);
@@ -40,19 +38,27 @@ const DetailPage = () => {
     postData("likes", `${id}/`, "");
   };
 
-
   return (
     <Grid container sx={detailPageStyle}>
-      <Grid item xs={11} sm={10} md={9} lg={7} xl={5} m={"auto"} width={"100%"} sx={{mt:"5rem"}}>
+      <Grid
+        item
+        xs={11}
+        sm={10}
+        md={9}
+        lg={7}
+        xl={5}
+        m={"auto"}
+        width={"100%"}
+        sx={{ mt: "5rem" }}
+      >
         <Box>
           <Box mt={"1rem"}>
             {veri.map((item) => (
               <Paper
-              
                 key={item.id}
                 elevation={3}
                 sx={{
-                  p:"1.5rem",
+                  p: "1.5rem",
                   m: "auto",
                   color: "black",
                   backgroundColor: "#eef8fa",
@@ -125,7 +131,7 @@ const DetailPage = () => {
 
                       <Typography>{item.likes}</Typography>
                     </Box>
-                  
+
                     <Box display={"flex"}>
                       <ChatBubbleIcon
                         onClick={() => setComment(!comment)}
