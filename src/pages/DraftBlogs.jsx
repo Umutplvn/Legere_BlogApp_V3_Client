@@ -46,7 +46,7 @@ const openModal=(item)=>{
               mt: "1rem",
             }}
           >
-            You have no draft.
+            You have no draft to be shown.
           </Typography>{" "}
           <br />
           <Typography
