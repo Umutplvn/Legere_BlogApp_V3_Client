@@ -9,7 +9,6 @@ const Register = () => {
   return (
     <Box 
    sx={registerStyle}>
-
       <RegisterForm/>
     </Box>
   );
