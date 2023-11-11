@@ -34,6 +34,7 @@ const Home = () => {
         <Grid item xs={11} md={11} mt={"4rem"}>
           <BlogNews />
         </Grid>
+        // <BlogNews/> Blognews can be used here with a proper API
       </Grid>
     </div>
   );
