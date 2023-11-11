@@ -16,7 +16,6 @@ const store = configureStore({
     auth: persistedReducer,
     blogs: blogDataReducer
   },
-  devTools: process.env.NODE_ENV !== "production",
 })
 
 
