@@ -1,6 +1,6 @@
 # Getting Started with Create React App
 
-## Available Scripts
+## Legere  - A Fullstack Project
 
 In the project directory, you can run:
 
